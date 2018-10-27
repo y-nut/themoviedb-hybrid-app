@@ -15,47 +15,78 @@ export class NConnectionService {
 
   //status = 'ONLINE';
   isConnected = true;
-  online$: Observable<boolean>;
+  //online$: Observable<boolean>;
 
   constructor(
     private connectionService: ConnectionService,
     private platform: Platform,
     private router: Router
   ) {
+    //const t = this;
+
+
+  }
+
+  async connection(){
     const t = this;
 
-    if (platform.ANDROID.valueOf() === true){
+
+    if (t.platform.ANDROID.valueOf() === true){
+
       let handler = Network.addListener('networkStatusChange', (status) => {
         console.log("Network status changed", status);
 
+
         t.isConnected = status.connected
+
+        t.check()
 
       });
 
+      let status = await Network.getStatus();
+
+      t.isConnected = status.connected
+
+      t.check()
 
 
-    } else if (platform.EDGE.valueOf() || platform.FIREFOX.valueOf() || platform.SAFARI.valueOf() || platform.isBrowser.valueOf()){
+
+    } else if (t.platform.EDGE.valueOf() || t.platform.FIREFOX.valueOf() || t.platform.SAFARI.valueOf() || t.platform.isBrowser.valueOf()){
       try {
         console.log('check')
 
-        t.online$ = merge(
+        const online$ = merge(
           of(navigator.onLine),
           fromEvent(window, 'online').pipe(mapTo(true)),
           fromEvent(window, 'offline').pipe(mapTo(false))
         );
 
-        t.online$.subscribe(net => {
+        online$.subscribe(net => {
           console.log(net)
 
           t.isConnected = net;
+
+          t.check()
         })
+
 
 
       } catch (error) {
         console.log(error)
+
       }
     } else {
 
+    }
+  }
+
+  check(){
+    const t = this;
+
+    if (!t.isConnected){
+      t.router.navigate(['/handle-reject-nav','offline'])
+    } else {
+      t.router.navigate(['/viewer-nav'])
     }
 
   }

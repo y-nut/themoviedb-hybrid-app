@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NConnectionService } from './services/connection/connection.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Plugins } from '@capacitor/core';
+
+const { Network } = Plugins;
 
 @Component({
   selector: 'app-root',
@@ -12,15 +15,21 @@ export class AppComponent {
 
   constructor(
     private conSvc: NConnectionService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ){
-    conSvc.online$.subscribe(net => {
-      if (!net){
-        router.navigate(['handle-reject-nav','offline'])
-      } else {
-        
-      }
-    })
+    this.do()
+
+  }
+
+  async do(){
+    const t = this;
+    t.conSvc.connection()
+
+
+
+
+
     
   }
 }

@@ -179,7 +179,7 @@ export class OverviewComponent implements OnInit {
   }
 
   maxStr(str: string){
-    const fixed = 50;
+    const fixed = 120;
     if (str.length > fixed){
       return str.slice(0,fixed-3) + '...'
     } else {
