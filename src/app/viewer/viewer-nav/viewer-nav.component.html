@@ -1,31 +1,43 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="!(isHandset$ | async)">
-    <mat-toolbar>Menu</mat-toolbar>
+<header fxLayout="row">
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()" fxShow fxHide.gt-sm>
+      <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+      <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+    </button>
+    <span class="app-name">
+      Video
+      
+    </span>
+
+    <div class="beta">BETA</div>
+
+    <div fxHide fxShow.gt-sm style="width: 100%">
+      
+    </div>
+
+    <span class="fill-remaining-space"></span>
+
+
+
+  </mat-toolbar>
+</header>
+<mat-sidenav-container>
+  <mat-sidenav 
+  #sidenav
+  name="sidenav"
+  class="sidenav"
+  fixedInViewport="true"
+  >
+
     <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span>Seidor-Evaluacion-Desarrollador-Android</span>
-    </mat-toolbar>
     <main>
       <router-outlet></router-outlet>
-      
     </main>
-    <!-- Add Content Here -->
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+  

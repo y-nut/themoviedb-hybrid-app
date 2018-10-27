@@ -2,3 +2,15 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.button-row {
+    width: 100%;
+    //margin-top: 20p;
+}
+
+.button-row  a,
+.button-row  button
+ {
+    //margin-right: 15px;
+    //text-align: center;
+}
