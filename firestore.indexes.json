@@ -1,0 +1,144 @@
+{
+  "indexes": [
+    {
+      "collectionId": "finds",
+      "state": "READY",
+      "fields": [
+        {
+          "fieldPath": "_UUID",
+          "mode": "ASCENDING"
+        },
+        {
+          "fieldPath": "_creationDate",
+          "mode": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionId": "finds",
+      "state": "READY",
+      "fields": [
+        {
+          "fieldPath": "_UUID",
+          "mode": "ASCENDING"
+        },
+        {
+          "fieldPath": "_creationDate",
+          "mode": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionId": "finds",
+      "state": "READY",
+      "fields": [
+        {
+          "fieldPath": "confidential",
+          "mode": "ASCENDING"
+        },
+        {
+          "fieldPath": "_creationDate",
+          "mode": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionId": "finds",
+      "state": "READY",
+      "fields": [
+        {
+          "fieldPath": "collection.id",
+          "mode": "ASCENDING"
+        },
+        {
+          "fieldPath": "_creationDate",
+          "mode": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionId": "finds",
+      "state": "READY",
+      "fields": [
+        {
+          "fieldPath": "_colID",
+          "mode": "ASCENDING"
+        },
+        {
+          "fieldPath": "_creationDate",
+          "mode": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionId": "collections",
+      "state": "READY",
+      "fields": [
+        {
+          "fieldPath": "_UUID",
+          "mode": "ASCENDING"
+        },
+        {
+          "fieldPath": "_creationDate",
+          "mode": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionId": "finds",
+      "state": "READY",
+      "fields": [
+        {
+          "fieldPath": "colID",
+          "mode": "ASCENDING"
+        },
+        {
+          "fieldPath": "_creationDate",
+          "mode": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionId": "finds",
+      "state": "READY",
+      "fields": [
+        {
+          "fieldPath": "colID",
+          "mode": "ASCENDING"
+        },
+        {
+          "fieldPath": "_creationDate",
+          "mode": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionId": "collections",
+      "state": "READY",
+      "fields": [
+        {
+          "fieldPath": "_UUID",
+          "mode": "ASCENDING"
+        },
+        {
+          "fieldPath": "_creationDate",
+          "mode": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionId": "collections",
+      "state": "READY",
+      "fields": [
+        {
+          "fieldPath": "_colID",
+          "mode": "ASCENDING"
+        },
+        {
+          "fieldPath": "_creationDate",
+          "mode": "ASCENDING"
+        }
+      ]
+    }
+  ]
+}

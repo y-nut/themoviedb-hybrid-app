@@ -6,7 +6,10 @@ import {
   MatToolbarModule, 
   MatSidenavModule, 
   MatIconModule, 
-  MatListModule
+  MatListModule,
+  MatTabsModule,
+  MatCardModule,
+  MatGridListModule
 } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 
@@ -18,7 +21,10 @@ const modules = [
   MatButtonModule,
   MatSidenavModule,
   MatIconModule,
-  MatListModule
+  MatListModule,
+  MatTabsModule,
+  MatCardModule,
+  MatGridListModule
 ]
 
 @NgModule({

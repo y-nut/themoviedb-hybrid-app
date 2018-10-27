@@ -11,9 +11,9 @@ import { map } from 'rxjs/operators';
 export class ViewerNavComponent {
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches)
-    );
+  .pipe(
+    map(result => result.matches)
+  );
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 
