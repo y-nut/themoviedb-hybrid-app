@@ -1,0 +1,6 @@
+{
+  "appId": "com.ttkaae.seidor",
+  "appName": "ttkaae.seidor.com",
+  "bundledWebRuntime": false,
+  "webDir": "dist/Seidor-Evaluacion-Desarrollador-Android"
+}

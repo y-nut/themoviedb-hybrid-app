@@ -1,18 +1,26 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ViewerModule } from './viewer/viewer.module';
+import { ConnectionModule } from './services/connection/connection.module';
+import { SharedModulesModule } from './libraries/shared-modules/shared-modules.module';
+import { NConnectionService } from './services/connection/connection.service';
+import { HandleRejectModule } from './handle-reject/handle-reject.module';
+import { ConnectionService } from 'ng-connection-service';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule
+    HandleRejectModule,
+    SharedModulesModule,
+    ViewerModule,
+    ConnectionModule
   ],
-  providers: [],
+  providers: [
+    NConnectionService,
+    ConnectionService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
