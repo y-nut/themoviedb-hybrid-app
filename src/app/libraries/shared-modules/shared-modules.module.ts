@@ -4,13 +4,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const modules = [
   BrowserModule,
   AppRoutingModule,
   BrowserAnimationsModule,
   CommonModule,
-  FlexLayoutModule
+  FlexLayoutModule,
+  FormsModule,
+  ReactiveFormsModule
 ];
 
 @NgModule({

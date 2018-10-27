@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, enableProdMode } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ViewerModule } from './viewer/viewer.module';
 import { ConnectionModule } from './services/connection/connection.module';
@@ -6,6 +6,8 @@ import { SharedModulesModule } from './libraries/shared-modules/shared-modules.m
 import { NConnectionService } from './services/connection/connection.service';
 import { HandleRejectModule } from './handle-reject/handle-reject.module';
 import { ConnectionService } from 'ng-connection-service';
+
+enableProdMode();
 
 @NgModule({
   declarations: [

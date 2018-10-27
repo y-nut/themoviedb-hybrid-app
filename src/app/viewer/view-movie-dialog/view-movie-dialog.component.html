@@ -1,0 +1,82 @@
+<div mat-dialog *ngIf="videoObj">
+  <div mat-dialog-title>
+    <h1 class="mat-h1" [innerHTML]="videoObj.title">
+
+    </h1>
+  </div>
+  <div mat-dialog-content>
+    <div fxLayout="row" fxLayout.xs="column"  fxLayoutGap="0.5%">
+      <div>
+          <img class="card-image" [src]="videoObj.poster_path" alt="Cover image">
+      </div>
+      <div>
+        <h2 class="mat-h2">Description</h2>
+        <span [innerHTML]="videoObj.overview">
+        </span>
+      </div>
+    </div>
+    <div>
+      <h2 class="mat-h2">Details</h2>
+      <table class="mat-table">
+        <tr class="mat-row">
+          <td class="mat-cell">
+            Original language:
+          </td>
+          <td class="mat-row">
+            {{ videoObj.original_language }}
+          </td>
+        </tr>
+        <tr class="mat-row">
+          <td class="mat-cell">
+            Original title:
+          </td>
+          <td class="mat-row">
+            {{ videoObj.original_title }}
+          </td>
+        </tr>
+        <tr class="mat-row">
+          <td class="mat-cell">
+            Release date:
+          </td>
+          <td class="mat-row">
+            {{ videoObj.release_date | date }}
+          </td>
+        </tr>
+        <tr class="mat-row">
+          <td class="mat-cell">
+            Popularity:
+          </td>
+          <td>
+              {{ videoObj.popularity  }}
+              
+              <!--mat-progress-bar mode="determinate" value="40"></mat-progress-bar-->
+          </td>
+        </tr>
+        <tr class="mat-row">
+          <td class="mat-cell">
+            Vote average:
+          </td>
+          <td>
+              {{ videoObj.vote_average  }} / {{videoObj.vote_count}}
+              
+              <!--mat-progress-bar mode="determinate" value="40"></mat-progress-bar-->
+          </td>
+        </tr>
+      </table>
+    </div>
+
+
+  </div>
+  <div mat-dialog-actions>
+    <div class="button-row"  fxLayout="row" fxLayoutAlign="center center">
+        <button mat-fab color="accent"><mat-icon>play_circle_filled</mat-icon> </button>
+        <button mat-raised-button mat-dialog-close color="basic">
+          <mat-icon>close</mat-icon> Close
+        </button>
+    </div>
+
+  </div>
+</div> 
+
+
+ 

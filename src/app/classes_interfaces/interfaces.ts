@@ -14,3 +14,4 @@ export interface videoResultInterface {
     vote_average: any
     vote_count: number
 }
+

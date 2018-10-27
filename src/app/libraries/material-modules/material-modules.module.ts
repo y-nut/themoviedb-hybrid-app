@@ -12,7 +12,9 @@ import {
   MatGridListModule,
   MatTableModule,
   MatProgressBarModule,
-  MatRadioModule
+  MatRadioModule,
+  MatInputModule,
+  MatDialogModule
 } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 
@@ -30,7 +32,9 @@ const modules = [
   MatGridListModule,
   MatTableModule,
   MatProgressBarModule,
-  MatRadioModule
+  MatRadioModule,
+  MatInputModule,
+  MatDialogModule
 ]
 
 @NgModule({

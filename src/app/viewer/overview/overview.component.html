@@ -1,8 +1,8 @@
 
-<div>
-  <mat-card style="min-width:80%">
+<div fxLayout="row" fxLayoutAlign="center center">
+  <mat-card style="min-width:80%; margin-top: 10px;">
     <mat-card-header>
-      <mat-card-title>Search</mat-card-title>
+      <mat-card-title>Menu</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <p>
@@ -10,70 +10,103 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <mat-radio-group class="example-radio-group">
-        <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
-          {{season}}
-        </mat-radio-button>
-      </mat-radio-group>
+      <form action="" [formGroup]="form_settings">
+        <mat-radio-group class="example-radio-group" formControlName="sort_criteria" style="width:100%">
+          <mat-radio-button class="example-radio-button" [value]="'popular'">
+            Popular
+          </mat-radio-button>
+          <mat-radio-button class="example-radio-button" [value]="'top'">
+            Top rated
+          </mat-radio-button>
+        </mat-radio-group>
+        <mat-hint>Sort by criteria</mat-hint>
+      </form>
+
     </mat-card-actions>
     <mat-card-footer></mat-card-footer>
   </mat-card>
+</div>
+<div *ngIf="form_settings">
 
-    <div *ngIf="videos_all" fxLayout="row wrap"  fxLayoutGap="0.5%" fxLayoutAlign="center">
-        <ng-container *ngFor="let video of videos_all.results">
-          <mat-card  fxFlex.xs="100" fxFlex.gt-sm="20" class="card">
-            <mat-card-header>
-              <mat-card-title>
-                <h2 class="mat-h2">
-                  {{  videoObj(video).title }}
-                </h2>
-              </mat-card-title>
-              <mat-card-subtitle>
-                <!--span [innerHTML]="maxStr(videoObj(video).overview)">
-                </span-->
-              </mat-card-subtitle>
-            </mat-card-header>
-            <img mat-card-image [src]="videoObj(video).poster_path" alt="">
-            <mat-card-content>
-                <span [innerHTML]="maxStr(videoObj(video).overview)">
-                  </span>
-            </mat-card-content>
-            <mat-card-actions >
-              <div class="button-row" fxLayout="row" fxLayoutAlign="center center">
-                  <button mat-fab color="accent"><mat-icon>play_circle_filled</mat-icon> </button>
-                  <button mat-button color="accent">See more</button>
-              </div>
+  <div *ngIf="form_settings.get('videos_sorted')" fxLayout="row wrap"  fxLayoutGap="0.5%" fxLayoutAlign="center" style="min-width:80%; margin-bottom: 30px;">
+    <!--pre style="max-width:80vw;">
+        form_settings.get('videos_sorted')
+        {{form_settings.get('videos_sorted').value | json}}
+    </pre-->
+    <ng-container *ngFor="let video of form_settings.get('videos_sorted')?.value?.results">
+      <mat-card  fxFlex.xs="100" fxFlex.gt-sm="20" class="card">
+        <mat-card-header fxLayout="row" fxLayoutAlign="center center">
+          <mat-card-title >
+            <h2 class="mat-h2" >
+              {{  videoObj(video).title }}
+            </h2>
+          </mat-card-title>
+          <mat-card-subtitle>
+            <!--span [innerHTML]="maxStr(videoObj(video).overview)">
+            </span-->
+          </mat-card-subtitle>
+        </mat-card-header>
+        <img class="card-image"  [src]="videoObj(video).poster_path" alt="Cover image">
+        <mat-card-content>
+            <span [innerHTML]="maxStr(videoObj(video).overview)">
+              </span>
+        </mat-card-content>
+        <mat-card-actions >
+          <div class="button-row" fxLayout="row" fxLayoutAlign="center center">
+              <button mat-fab color="accent"><mat-icon>play_circle_filled</mat-icon> </button>
+              <button mat-button color="accent" (click)="seeMovie( video )">See more</button>
+          </div>
 
-            </mat-card-actions>
-            <mat-card-footer>
-              <table class="mat-table">
-                <tr class="mat-row">
-                  <td class="mat-cell">
-                    Original language:
-                  </td>
-                  <td class="mat-row">
-                    {{ videoObj(video).original_language }}
-                  </td>
-                </tr>
-                <tr class="mat-row">
-                  <td class="mat-cell">
-                    Original title:
-                  </td>
-                  <td class="mat-row">
-                    {{ videoObj(video).original_title }}
-                  </td>
-                </tr>
-                <tr class="mat-row">
-                  <td class="mat-cell">
-                    Release date:
-                  </td>
-                  <td class="mat-row">
-                    {{ videoObj(video).release_date | date }}
-                  </td>
-                </tr>
-              </table>
-            </mat-card-footer>
-          </mat-card>
-        </ng-container>
-      </div>
+        </mat-card-actions>
+        <mat-card-footer style="text-align:left;">
+          <table class="mat-table">
+            <tr class="mat-row">
+              <td class="mat-cell">
+                Original language:
+              </td>
+              <td class="mat-row">
+                {{ videoObj(video).original_language }}
+              </td>
+            </tr>
+            <tr class="mat-row">
+              <td class="mat-cell">
+                Original title:
+              </td>
+              <td class="mat-row">
+                {{ videoObj(video).original_title }}
+              </td>
+            </tr>
+            <tr class="mat-row">
+              <td class="mat-cell">
+                Release date:
+              </td>
+              <td class="mat-row">
+                {{ videoObj(video).release_date | date }}
+              </td>
+            </tr>
+            <tr class="mat-row">
+              <td class="mat-cell">
+                Popularity:
+              </td>
+              <td>
+                  {{ videoObj(video).popularity  }}
+                  
+                  <!--mat-progress-bar mode="determinate" value="40"></mat-progress-bar-->
+              </td>
+            </tr>
+            <tr class="mat-row">
+              <td class="mat-cell">
+                Vote average:
+              </td>
+              <td>
+                  {{ videoObj(video).vote_average  }} / {{videoObj(video).vote_count}}
+                  
+                  <!--mat-progress-bar mode="determinate" value="40"></mat-progress-bar-->
+              </td>
+            </tr>
+          </table>
+        </mat-card-footer>
+      </mat-card>
+    </ng-container>
+  </div>
 </div>

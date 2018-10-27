@@ -2,7 +2,7 @@ import { videoResultInterface } from './interfaces';
 
 export class VideoJSONClass {
     constructor(
-        public results: Array<any>,
+        public results: Array<VideoResultClass>,
         public page: number,
         public total_pages: number,
         public total_results: number
@@ -47,3 +47,12 @@ export class VideoResultClass {
     }
 }
 
+export class SortDirClass {
+    asc: string;
+    desc: string
+
+    constructor(){
+        this.asc = 'asc',
+        this.desc = 'desc'
+    }
+}
