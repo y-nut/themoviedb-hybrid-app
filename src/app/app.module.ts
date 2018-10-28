@@ -6,6 +6,7 @@ import { SharedModulesModule } from './libraries/shared-modules/shared-modules.m
 import { NConnectionService } from './services/connection/connection.service';
 import { HandleRejectModule } from './handle-reject/handle-reject.module';
 import { ConnectionService } from 'ng-connection-service';
+import { IconsModule } from './services/icons/icons.module';
 
 enableProdMode();
 
@@ -17,7 +18,8 @@ enableProdMode();
     HandleRejectModule,
     SharedModulesModule,
     ViewerModule,
-    ConnectionModule
+    ConnectionModule,
+    IconsModule
   ],
   providers: [
     NConnectionService,

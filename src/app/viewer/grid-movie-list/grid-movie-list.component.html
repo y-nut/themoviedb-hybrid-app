@@ -45,7 +45,7 @@
                 Release date:
               </td>
               <td class="mat-row">
-                {{ videoObj(video).release_date | date }}
+                {{ videoObj(video).release_date | date }} 
               </td>
             </tr>
             <!--tr class="mat-row">
@@ -63,7 +63,7 @@
               </td>
               <td>
                   {{ videoObj(video).vote_average  }} / {{videoObj(video).vote_count}}
-                  
+                  <app-star-rating [rating]="videoObj(video).vote_average"></app-star-rating>
               </td>
             </tr>
           </table>

@@ -8,25 +8,29 @@ import { HttpNodejsService } from '../services/http-nodejs/http-nodejs.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ViewMovieDialogComponent } from './view-movie-dialog/view-movie-dialog.component';
 import { GridMovieListComponent } from './grid-movie-list/grid-movie-list.component';
+import { StarRatingComponent } from './star-rating/star-rating.component';
+import { IconsModule } from '../services/icons/icons.module';
 
 @NgModule({
   imports: [
     SharedModulesModule,
     MaterialModulesModule,
-    HttpNodejsModule
+    HttpNodejsModule,
+    IconsModule
   ],
   declarations: [
     OverviewComponent, 
     ViewerNavComponent, 
     ViewMovieDialogComponent, 
-    GridMovieListComponent
+    GridMovieListComponent, StarRatingComponent
   ], 
   providers: [
     //HttpNodejsService
   ],
   entryComponents: [
     ViewMovieDialogComponent,
-    GridMovieListComponent
+    GridMovieListComponent,
+    StarRatingComponent
   ]
 })
 export class ViewerModule { }
