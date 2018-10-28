@@ -59,10 +59,11 @@
             </tr-->
             <tr class="mat-row">
               <td class="mat-cell">
-                Vote average:
+                Rating:
               </td>
               <td>
-                  {{ videoObj(video).vote_average  }} / {{videoObj(video).vote_count}}
+                <!-- {{ videoObj(video).vote_average  }} / {{videoObj(video).vote_count}}-->
+                 
                   <app-star-rating [rating]="videoObj(video).vote_average"></app-star-rating>
               </td>
             </tr>

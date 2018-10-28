@@ -1,5 +1,9 @@
 
 <div *ngIf="form_settings">
+  <div fxLayout="row" fxLayoutAlign="center center">
+      <div class="mat-display-1" style="margin-top:20px;">Movie list</div>
+  </div>
+    
   <mat-tab-group 
     style="min-height:100%;"
     mat-stretch-tabs 
@@ -9,6 +13,7 @@
   >
 
     <mat-tab label="Popular" #popular data-index="0" style="min-height:100%;">
+
       <div fxLayout="( isHandset$ | async ) ? 'column' : 'row'"  fxLayoutAlign="center center" fxLayoutGap="5%" >
           <p >
             <span style="margin-right: 20px;">Popularity</span>
@@ -37,6 +42,7 @@
       <app-grid-movie-list [videos]="form_settings.get('videos_sorted').value"></app-grid-movie-list>
     </mat-tab>
     <mat-tab label="Top rated" #top_rated data-index="1" style="min-height:100%;"> 
+     
       <div fxLayout="( isHandset$ | async ) ? 'column' : 'row'" fxLayoutAlign="center center" fxLayoutGap="5%" >
         <p >
           <span style="margin-right: 20px;">Popularity</span>

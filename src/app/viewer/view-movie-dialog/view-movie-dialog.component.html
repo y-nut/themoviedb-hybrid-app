@@ -17,7 +17,7 @@
     </div>
     <div fxLayout="column" fxLayoutAlign="center center">
       <h2 class="mat-h2">Details</h2>
-      <table class="mat-table">
+      <table class="mat-table" style="width:100%;">
         <tr class="mat-row">
           <td class="mat-cell">
             Original language:
@@ -54,7 +54,17 @@
         </tr-->
         <tr class="mat-row">
           <td class="mat-cell">
-            Vote average:
+            Rating:
+          </td>
+          <td>
+              <app-star-rating [rating]="videoObj.vote_average"></app-star-rating>
+              
+              <!--mat-progress-bar mode="determinate" value="40"></mat-progress-bar-->
+          </td>
+        </tr>
+        <tr class="mat-row">
+          <td class="mat-cell">
+           Vote average / <br> Number of votes:
           </td>
           <td>
               {{ videoObj.vote_average  }} / {{videoObj.vote_count}}
@@ -67,7 +77,7 @@
 
 
   </div>
-  <div mat-dialog-actions>
+  <div mat-dialog-actions style="margin-top:15px; margin-bottom:15px;">
     <div class="button-row"  fxLayout="row" fxLayoutAlign="center center">
         <button mat-fab color="accent" style="margin-right:50px;"><mat-icon>play_circle_filled</mat-icon> </button>
         <button mat-raised-button mat-dialog-close color="basic">
