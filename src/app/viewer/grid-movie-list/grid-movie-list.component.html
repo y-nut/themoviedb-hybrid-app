@@ -1,0 +1,73 @@
+
+  <div *ngIf="videos && videos.results" fxLayout="row wrap"  fxLayoutGap="0.5%" fxLayoutAlign="center" style="min-width:80%; margin-bottom: 30px;">
+
+    <ng-container *ngFor="let video of videos.results">
+      <mat-card  fxFlex.xs="100" fxFlex.gt-sm="20" class="card">
+        <mat-card-header fxLayout="row" fxLayoutAlign="center center">
+          <mat-card-title >
+            <h2 class="mat-h2" >
+              {{  videoObj(video).title }}
+            </h2>
+          </mat-card-title>
+        </mat-card-header>
+        <img class="card-image" (click)="seeMovie( video )"  [src]="videoObj(video).poster_path" alt="Cover image">
+        <mat-card-content>
+            <span [innerHTML]="maxStr(videoObj(video).overview)">
+              </span>
+        </mat-card-content>
+        <mat-card-actions >
+          <div class="button-row" fxLayout="row" fxLayoutAlign="center center">
+              <button mat-fab color="accent" style="margin-right:50px;"><mat-icon>play_circle_filled</mat-icon> </button>
+              <button mat-button color="accent" (click)="seeMovie( video )">See more</button>
+          </div>
+
+        </mat-card-actions>
+        <mat-card-footer style="text-align:left;">
+          <table class="mat-table">
+            <tr class="mat-row">
+              <td class="mat-cell">
+                Original language:
+              </td>
+              <td class="mat-row">
+                {{ i18nSvc.lang(videoObj(video).original_language) }}
+              </td>
+            </tr>
+            <tr class="mat-row">
+              <td class="mat-cell">
+                Original title:
+              </td>
+              <td class="mat-row">
+                {{ videoObj(video).original_title }}
+              </td>
+            </tr>
+            <tr class="mat-row">
+              <td class="mat-cell">
+                Release date:
+              </td>
+              <td class="mat-row">
+                {{ videoObj(video).release_date | date }}
+              </td>
+            </tr>
+            <!--tr class="mat-row">
+              <td class="mat-cell">
+                Popularity:
+              </td>
+              <td>
+                  {{ videoObj(video).popularity  }}
+                  
+              </td>
+            </tr-->
+            <tr class="mat-row">
+              <td class="mat-cell">
+                Vote average:
+              </td>
+              <td>
+                  {{ videoObj(video).vote_average  }} / {{videoObj(video).vote_count}}
+                  
+              </td>
+            </tr>
+          </table>
+        </mat-card-footer>
+      </mat-card>
+    </ng-container>
+  </div>

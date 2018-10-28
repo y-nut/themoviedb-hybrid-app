@@ -41,3 +41,7 @@ Thumbs.db
 
 /functions/node_modules
 /src-tt
+/android
+/e2e
+/dist
+/node_modules

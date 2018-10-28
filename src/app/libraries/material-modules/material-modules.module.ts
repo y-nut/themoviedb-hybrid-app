@@ -14,7 +14,8 @@ import {
   MatProgressBarModule,
   MatRadioModule,
   MatInputModule,
-  MatDialogModule
+  MatDialogModule,
+  MatButtonToggleModule
 } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 
@@ -34,7 +35,8 @@ const modules = [
   MatProgressBarModule,
   MatRadioModule,
   MatInputModule,
-  MatDialogModule
+  MatDialogModule,
+  MatButtonToggleModule
 ]
 
 @NgModule({

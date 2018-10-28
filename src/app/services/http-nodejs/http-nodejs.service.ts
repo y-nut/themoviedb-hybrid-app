@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpRequest, HttpHeaders} from '@angular/common/http';
-import { VideoJSONClass } from '../../classes_interfaces/classes';
+import { VideoJSONClass } from '../../classes_interfaces_constants/classes';
 import { Observable } from 'rxjs';
 
 @Injectable({

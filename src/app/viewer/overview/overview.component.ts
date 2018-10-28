@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpNodejsService } from 'src/app/services/http-nodejs/http-nodejs.service';
 import { tap, map } from 'rxjs/operators';
-import { VideoJSONClass, VideoResultClass, SortDirClass } from 'src/app/classes_interfaces/classes';
-import { Observable } from 'rxjs';
+import { VideoJSONClass, VideoResultClass, SortDirClass } from 'src/app/classes_interfaces_constants/classes';
+import { Observable, Subscription } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { MatDialog, MatDialogConfig } from '@angular/material';
+import { MatDialog, MatDialogConfig, MatTabChangeEvent, MatButtonToggleChange } from '@angular/material';
 import { ViewMovieDialogComponent } from '../view-movie-dialog/view-movie-dialog.component';
-import { videoResultInterface } from 'src/app/classes_interfaces/interfaces';
+import { videoResultInterface } from 'src/app/classes_interfaces_constants/interfaces';
 
 @Component({
   selector: 'app-overview',
@@ -20,6 +20,8 @@ export class OverviewComponent implements OnInit {
   videos_top: VideoJSONClass;
 
   form_settings: FormGroup;
+  dirKey: string;
+  changer: boolean;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
   .pipe(
@@ -46,83 +48,79 @@ export class OverviewComponent implements OnInit {
     const t = this;
 
     t.form_settings = t._fb.group({
-      sort_criteria: new FormControl('popular', [Validators.required]),
+      chosenTab: new FormControl('popular', [Validators.required]),
+      sort: t._fb.group({
+        popularity: new FormControl('desc', [Validators.required]),
+        vote_average: new FormControl(null, [Validators.required]),
+      }),
+      dirKey: new FormControl('popularity', [Validators.required]),
       videos_sorted: new FormControl(null, [Validators.required])
     })
-/*
-    t.form_settings.get('videos_sorted').valueChanges.subscribe(ch => { 
-      console.log('ch', ch)
-      const sortCriteria = t.form_settings.get('sort_criteria').value
-      //t.sortBy(sortCriteria, 'desc')
-    })*/
 
-    t.form_settings.get('sort_criteria').valueChanges.subscribe(ch => {
-      console.log('ch', ch)
-
-      t.sortBy(ch, 'desc')
-
-
+    t.form_settings.get('chosenTab').valueChanges.subscribe(ch => {
+      t.sortBy()
     })
+
+
+    let sub_pop: Subscription
+    let sub_vote: Subscription
+
+    const pop = () => {
+      sub_pop = t.form_settings.get('sort.popularity').valueChanges.subscribe(ch => {
+        if (sub_vote){
+          sub_vote.unsubscribe();
+          t.form_settings.get('sort.vote_average').setValue(null);
+          vote();
+        }
+
+        t.form_settings.get('dirKey').setValue('popularity')
+        t.sortBy()
+      })
+    }
+
+    const vote = () => {
+      sub_vote = t.form_settings.get('sort.vote_average').valueChanges.subscribe(ch => {
+        if (sub_pop){
+          sub_pop.unsubscribe();
+          t.form_settings.get('sort.popularity').setValue(null);
+          pop();
+        }
+
+        t.form_settings.get('dirKey').setValue('vote_average')
+        t.sortBy()
+      })
+    }
+
+    pop();
+    vote()
+
+
   }
 
-  /*
-  sortBy(type: string){
+
+  async sortBy(){
     const t = this;
 
+    
 
+    const key = t.form_settings.get('dirKey').value
+    const type: string = t.form_settings.get('chosenTab').value 
+    const dir: string = t.form_settings.get('sort').get(key).value
 
+    if (!type || !dir || !key) return
 
+    let videos: VideoJSONClass //= Object.assign({}, t.form_settings.get('videos_sorted').value )
 
     switch(type){
       case 'popular':
-/*
-        const compare =(a,b) => {
-          const a_popularity = a.popularity
-          const b_popularity = b.popularity
-          if (a_popularity < b_popularity)
-            return -1;
-          if (a_popularity > b_popularity)
-            return 1;
-          return 0;
-        }*/
-
-        //const sort = t.videos_all.results.sort(compare);
-   /*     const sort = t.compare(
-          t.videos_all,
-
-        )
-        console.log('sort', sort)
-        
-        t.videos_all.results = sort.slice()
-
-        break;
-    }
-  }*/
-
-  async sortBy(type: string, dir: string){
-    //if (!Array.isArray(arr)) return arr;
-    const t = this;
-    let key: string;
-
-    switch(type){
-      case 'popular':
-        //t.videos_sorted = Object.assign({}, t.videos_all)
-        /*t.form_settings.get('videos_sorted').setValue(
-          Object.assign({},t.videos_all)
-        )*/
-        key = 'popularity'
+        videos = Object.assign({}, t.videos_all)
         break;
       case 'top':
-        t.form_settings.get('videos_sorted').setValue(
-          Object.assign({},t.videos_top)
-        )
-        //t.videos_sorted = Object.assign({}, t.videos_top)
-        return
+        videos = Object.assign({}, t.videos_top)
+        break;
     }
 
-    if (!key) return
-
-
+    if (!key || !videos) return
 
     const compare = (a,b) => {
       switch(dir){
@@ -139,15 +137,10 @@ export class OverviewComponent implements OnInit {
       }
     }
 
-    //t.videos_sorted.results = t.videos_all.results.sort(compare).slice()
-
-    t.videos_all.results = t.videos_all.results.sort(compare).slice()
+    videos.results = videos.results.sort(compare).slice()
 
     t.form_settings.get('videos_sorted').setValue(
-      //t.videos_all.results.sort(compare).slice()
-      Object.assign({},t.videos_all )
-      
-
+      Object.assign({}, videos)
     )
 
 
@@ -156,12 +149,13 @@ export class OverviewComponent implements OnInit {
   getAllVideos(){
     const t = this;
     t.videoSvc.getAllVideos().subscribe((json: VideoJSONClass) => {   
+      //console.log('json', json)
       t.videos_all = Object.assign({}, json) 
-      console.log('all videost', t.videos_all)
+      //console.log('all videos', t.videos_all)
       const videos: FormControl = <FormControl>t.form_settings.get('videos_sorted')
       if (!videos.value){
-        const type = t.form_settings.get('sort_criteria').value
-        t.sortBy(type, 'desc')
+          videos.setValue(json)
+        //t.sortBy()
       }
     })
   }
@@ -173,40 +167,36 @@ export class OverviewComponent implements OnInit {
     })
   }
 
-  videoObj(res): VideoResultClass {
-    const t= this;
-    return new VideoResultClass(res)
-  }
 
-  maxStr(str: string){
-    const fixed = 120;
-    if (str.length > fixed){
-      return str.slice(0,fixed-3) + '...'
-    } else {
-      return str
-    }
-  }
-
-  seeMovie(videoObj: videoResultInterface){
+  selectedTabChange($event: MatTabChangeEvent){
     const t = this;
 
-    const nVideoObj = t.videoObj(videoObj)
+    //console.log('evt', $event)
+    let key: string;
 
-    const conf: MatDialogConfig = {
-      data: nVideoObj as VideoResultClass,
-      maxWidth: '500px'
+    switch($event.index){
+      case 0:
+        key = 'popular'
+        break;
+      case 1:
+        key = 'top'
+        break;
+      default:
+        break;
+
     }
 
-    const dialog = t.dialog.open(
-      ViewMovieDialogComponent,
-      conf
-    )
+    //console.log('key', key)
+    t.form_settings.get('chosenTab').setValue(key)
 
-    dialog.afterClosed().subscribe(data => {
-      console.log('data', data)
-    })
 
-    
+  }
+
+  change($event: MatButtonToggleChange, key: string){
+    const t = this;
+    //console.log('evt', $event)
+    t.form_settings.get('sort').get(key).setValue($event.value)
+
   }
 
 

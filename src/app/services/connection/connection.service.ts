@@ -53,7 +53,7 @@ export class NConnectionService {
 
     } else if (t.platform.EDGE.valueOf() || t.platform.FIREFOX.valueOf() || t.platform.SAFARI.valueOf() || t.platform.isBrowser.valueOf()){
       try {
-        console.log('check')
+        //console.log('check')
 
         const online$ = merge(
           of(navigator.onLine),
@@ -62,7 +62,7 @@ export class NConnectionService {
         );
 
         online$.subscribe(net => {
-          console.log(net)
+          //console.log(net)
 
           t.isConnected = net;
 

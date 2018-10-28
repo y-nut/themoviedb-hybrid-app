@@ -7,6 +7,7 @@ import { HttpNodejsModule } from '../services/http-nodejs/http-nodejs.module';
 import { HttpNodejsService } from '../services/http-nodejs/http-nodejs.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ViewMovieDialogComponent } from './view-movie-dialog/view-movie-dialog.component';
+import { GridMovieListComponent } from './grid-movie-list/grid-movie-list.component';
 
 @NgModule({
   imports: [
@@ -17,13 +18,15 @@ import { ViewMovieDialogComponent } from './view-movie-dialog/view-movie-dialog.
   declarations: [
     OverviewComponent, 
     ViewerNavComponent, 
-    ViewMovieDialogComponent
-  ],
+    ViewMovieDialogComponent, 
+    GridMovieListComponent
+  ], 
   providers: [
     //HttpNodejsService
   ],
   entryComponents: [
-    ViewMovieDialogComponent
+    ViewMovieDialogComponent,
+    GridMovieListComponent
   ]
 })
 export class ViewerModule { }

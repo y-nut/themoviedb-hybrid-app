@@ -5,8 +5,8 @@
     </h1>
   </div>
   <div mat-dialog-content>
-    <div fxLayout="row" fxLayout.xs="column"  fxLayoutGap="0.5%">
-      <div>
+    <div fxLayout="row" fxLayout.xs="column"  fxLayoutGap="2%">
+      <div style="margin-right: 10px;">
           <img class="card-image" [src]="videoObj.poster_path" alt="Cover image">
       </div>
       <div>
@@ -15,7 +15,7 @@
         </span>
       </div>
     </div>
-    <div>
+    <div fxLayout="column" fxLayoutAlign="center center">
       <h2 class="mat-h2">Details</h2>
       <table class="mat-table">
         <tr class="mat-row">
@@ -23,7 +23,7 @@
             Original language:
           </td>
           <td class="mat-row">
-            {{ videoObj.original_language }}
+            {{ i18nSvc.lang(videoObj.original_language)  }}
           </td>
         </tr>
         <tr class="mat-row">
@@ -42,16 +42,16 @@
             {{ videoObj.release_date | date }}
           </td>
         </tr>
-        <tr class="mat-row">
+        <!--tr class="mat-row">
           <td class="mat-cell">
             Popularity:
           </td>
           <td>
               {{ videoObj.popularity  }}
               
-              <!--mat-progress-bar mode="determinate" value="40"></mat-progress-bar-->
+             
           </td>
-        </tr>
+        </tr-->
         <tr class="mat-row">
           <td class="mat-cell">
             Vote average:
@@ -69,7 +69,7 @@
   </div>
   <div mat-dialog-actions>
     <div class="button-row"  fxLayout="row" fxLayoutAlign="center center">
-        <button mat-fab color="accent"><mat-icon>play_circle_filled</mat-icon> </button>
+        <button mat-fab color="accent" style="margin-right:50px;"><mat-icon>play_circle_filled</mat-icon> </button>
         <button mat-raised-button mat-dialog-close color="basic">
           <mat-icon>close</mat-icon> Close
         </button>

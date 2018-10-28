@@ -8,3 +8,22 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     //margin-top: 20p;
 }
 
+.mat-display-1, 
+.mat-display-2, 
+.mat-display-4,
+p,
+input,
+mat-hint,
+button,
+a,
+mat-tab,
+.mat-h1,
+.mat-h2,
+.mat-cell,
+.mat-row
+
+{
+    font-family: 'Source Sans Pro', sans-serif;
+    //font-family: 'Roboto', sans-serif;
+    font-weight: 200;
+}
