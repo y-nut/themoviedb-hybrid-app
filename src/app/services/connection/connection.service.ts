@@ -30,8 +30,8 @@ export class NConnectionService {
   async connection(){
     const t = this;
 
-
-    if (t.platform.ANDROID.valueOf() === true){
+/*
+    if (t.platform.ANDROID.valueOf() ){
 
       let handler = Network.addListener('networkStatusChange', (status) => {
         console.log("Network status changed", status);
@@ -51,7 +51,7 @@ export class NConnectionService {
 
 
 
-    } else if (t.platform.EDGE.valueOf() || t.platform.FIREFOX.valueOf() || t.platform.SAFARI.valueOf() || t.platform.isBrowser.valueOf()){
+    } else*/ if (t.platform.EDGE.valueOf() || t.platform.FIREFOX.valueOf() || t.platform.SAFARI.valueOf() || t.platform.isBrowser.valueOf() || t.platform.ANDROID.valueOf()){
       try {
         //console.log('check')
 
