@@ -17,7 +17,8 @@
         </mat-card-content>
         <mat-card-actions >
           <div class="button-row" fxLayout="row" fxLayoutAlign="center center">
-              <button mat-fab color="accent" style="margin-right:50px;"><mat-icon>play_circle_filled</mat-icon> </button>
+              
+              <app-play-btn [video]="video"></app-play-btn>
               <button mat-button color="accent" (click)="seeMovie( video )">See more</button>
           </div>
 

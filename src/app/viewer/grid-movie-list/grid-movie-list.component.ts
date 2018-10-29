@@ -6,6 +6,7 @@ import { ViewMovieDialogComponent } from '../view-movie-dialog/view-movie-dialog
 import { FormGroup } from '@angular/forms';
 import { isoLangs } from '../../classes_interfaces_constants/constants';
 import { I18nService } from 'src/app/services/i18n/i18n.service';
+import { MessageService } from 'src/app/services/messages/message.service';
 
 @Component({
   selector: 'app-grid-movie-list',
@@ -19,7 +20,8 @@ export class GridMovieListComponent implements OnInit, OnChanges {
 
   constructor(
     private dialog: MatDialog,
-    public i18nSvc: I18nService
+    public i18nSvc: I18nService,
+    private msgSvc: MessageService
   ) { }
 
   ngOnInit() {
@@ -68,7 +70,6 @@ export class GridMovieListComponent implements OnInit, OnChanges {
 
     
   }
-
 
 
 }

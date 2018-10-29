@@ -19,6 +19,8 @@ export class OverviewComponent implements OnInit {
   videos_all: VideoJSONClass;
   videos_top: VideoJSONClass;
 
+  //spinner: boolean;
+
   form_settings: FormGroup;
   dirKey: string;
   changer: boolean;

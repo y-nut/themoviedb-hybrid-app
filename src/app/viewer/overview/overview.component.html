@@ -39,7 +39,10 @@
               </mat-button-toggle-group>
           </p>
         </div>
-      <app-grid-movie-list [videos]="form_settings.get('videos_sorted').value"></app-grid-movie-list>
+
+
+      <mat-spinner *ngIf="!form_settings.get('videos_sorted').value"></mat-spinner>
+      <app-grid-movie-list *ngIf="form_settings.get('videos_sorted').value" [videos]="form_settings.get('videos_sorted').value"></app-grid-movie-list>
     </mat-tab>
     <mat-tab label="Top rated" #top_rated data-index="1" style="min-height:100%;"> 
      
@@ -69,8 +72,8 @@
         </p>
       </div>
     
-
-      <app-grid-movie-list [videos]="form_settings.get('videos_sorted').value"></app-grid-movie-list>
+      <mat-spinner *ngIf="!form_settings.get('videos_sorted').value"></mat-spinner>
+      <app-grid-movie-list *ngIf="form_settings.get('videos_sorted').value" [videos]="form_settings.get('videos_sorted').value"></app-grid-movie-list>
     </mat-tab>
 
   </mat-tab-group>

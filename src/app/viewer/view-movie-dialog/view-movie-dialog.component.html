@@ -23,7 +23,7 @@
             Original language:
           </td>
           <td class="mat-row">
-            {{ i18nSvc.lang(videoObj.original_language)  }}
+            {{ i18nSvc.lang(videoObj.original_language)  }} 
           </td>
         </tr>
         <tr class="mat-row">
@@ -42,34 +42,22 @@
             {{ videoObj.release_date | date }}
           </td>
         </tr>
-        <!--tr class="mat-row">
-          <td class="mat-cell">
-            Popularity:
-          </td>
-          <td>
-              {{ videoObj.popularity  }}
-              
-             
-          </td>
-        </tr-->
+
         <tr class="mat-row">
           <td class="mat-cell">
             Rating:
           </td>
           <td>
               <app-star-rating [rating]="videoObj.vote_average"></app-star-rating>
-              
-              <!--mat-progress-bar mode="determinate" value="40"></mat-progress-bar-->
           </td>
         </tr>
         <tr class="mat-row">
           <td class="mat-cell">
-           Vote average / <br> Number of votes:
+           Number of votes:
           </td>
           <td>
-              {{ videoObj.vote_average  }} / {{videoObj.vote_count}}
+             {{videoObj.vote_count}}
               
-              <!--mat-progress-bar mode="determinate" value="40"></mat-progress-bar-->
           </td>
         </tr>
       </table>
@@ -79,7 +67,7 @@
   </div>
   <div mat-dialog-actions style="margin-top:15px; margin-bottom:15px;">
     <div class="button-row"  fxLayout="row" fxLayoutAlign="center center">
-        <button mat-fab color="accent" style="margin-right:50px;"><mat-icon>play_circle_filled</mat-icon> </button>
+        <app-play-btn [video]="videoObj"></app-play-btn>
         <button mat-raised-button mat-dialog-close color="basic">
           <mat-icon>close</mat-icon> Close
         </button>
@@ -87,6 +75,6 @@
 
   </div>
 </div> 
-
+ 
 
  

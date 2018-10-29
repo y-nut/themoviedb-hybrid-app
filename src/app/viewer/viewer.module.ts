@@ -10,19 +10,24 @@ import { ViewMovieDialogComponent } from './view-movie-dialog/view-movie-dialog.
 import { GridMovieListComponent } from './grid-movie-list/grid-movie-list.component';
 import { StarRatingComponent } from './star-rating/star-rating.component';
 import { IconsModule } from '../services/icons/icons.module';
+import { MessagesModule } from '../services/messages/messages.module';
+import { PlayBtnComponent } from './play-btn/play-btn.component';
 
 @NgModule({
   imports: [
     SharedModulesModule,
     MaterialModulesModule,
     HttpNodejsModule,
-    IconsModule
+    IconsModule,
+    MessagesModule
   ],
   declarations: [
     OverviewComponent, 
     ViewerNavComponent, 
     ViewMovieDialogComponent, 
-    GridMovieListComponent, StarRatingComponent
+    GridMovieListComponent, 
+    StarRatingComponent, 
+    PlayBtnComponent
   ], 
   providers: [
     //HttpNodejsService
@@ -30,7 +35,8 @@ import { IconsModule } from '../services/icons/icons.module';
   entryComponents: [
     ViewMovieDialogComponent,
     GridMovieListComponent,
-    StarRatingComponent
+    StarRatingComponent,
+    PlayBtnComponent
   ]
 })
 export class ViewerModule { }
