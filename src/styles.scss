@@ -27,3 +27,46 @@ mat-tab,
     //font-family: 'Roboto', sans-serif;
     font-weight: 200;
 }
+
+
+header {
+    flex: 0 1 auto;
+    position: sticky;
+    position: -webkit-sticky; /* For macOS/iOS Safari */
+    top: 0;
+    z-index: 1000;
+  
+  
+    mat-toolbar {
+      span.app-name {
+        margin-left: 16px;
+      }
+      span.fill-remaining-space {
+        flex: 1 1 auto;
+      }
+      mat-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 28px;
+      }
+    }
+  }
+  
+  mat-sidenav-container {
+    flex: 1 1 auto;
+  
+    mat-sidenav {
+      width: 200px;
+      //padding: 20px;
+      padding-top: 64px;
+    }
+  
+    mat-sidenav-content {
+      //padding: 8px;
+      //min-height: 100vh;
+      height: 100%;
+    }
+  }
+  
+  
+  

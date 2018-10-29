@@ -82,7 +82,7 @@ export class NConnectionService {
 
   check(){
     const t = this;
-
+    console.log('check')
     if (!t.isConnected){
       t.router.navigate(['/handle-reject-nav','offline'])
     } else {

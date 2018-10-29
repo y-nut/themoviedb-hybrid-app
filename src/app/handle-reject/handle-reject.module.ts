@@ -6,11 +6,13 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { SharedModulesModule } from '../libraries/shared-modules/shared-modules.module';
 import { MaterialModulesModule } from '../libraries/material-modules/material-modules.module';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   imports: [
     SharedModulesModule,
-    MaterialModulesModule
+    MaterialModulesModule,
+    AppRoutingModule
   ],
   declarations: [
     OfflineComponent, 
