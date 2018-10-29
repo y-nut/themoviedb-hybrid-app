@@ -6,11 +6,14 @@ A simple hybrid app that utilizes themoviedb.org's API.
 
 ##Demo
 Screenshots: 
-<img src="https://preview.ibb.co/inftaq/Screenshot-20181028-162903.png" width="auto" height="256" title="Screeshot 1">
-<img src="https://preview.ibb.co/inftaq/Screenshot-20181028-162919.png" width="auto" height="256" title="Screeshot 1">
-<img src="https://preview.ibb.co/inftaq/Screenshot-20181028-162940.png" width="auto" height="256" title="Screeshot 1">
-<img src="https://preview.ibb.co/inftaq/Screenshot-20181028-162947.png" width="auto" height="256" title="Screeshot 1">
+<img src="https://image.ibb.co/ibxcLq/Screenshot-20181028-162919.png" width="auto" height="256" title="Screeshot 1">
+<img src="https://image.ibb.co/byUP0q/Screenshot-20181028-162903.png" width="auto" height="256" title="Screeshot 1">
+<img src="https://image.ibb.co/mmwiQq/8-A45-F842-D9-F6-479-E-8-E08-F3-C565-B9-C5-F0.jpg" width="auto" height="256" title="Screeshot 1">
+<img src="https://image.ibb.co/bunUyA/E4117407-70-B9-4-DAE-99-E2-5390-DDEAB80-D.jpg" width="auto" height="256" title="Screeshot 1">
 
+
+<a href="https://ibb.co/ifiTRV"><img src="https://preview.ibb.co/kNmhmV/Screenshot-20181028-162903.png" alt="Screenshot-20181028-162903" border="0"></a>
+<a href="https://ibb.co/f2cNmV"><img src="https://preview.ibb.co/eckmDA/Screenshot-20181028-162919.png" alt="Screenshot-20181028-162919" border="0"></a>
 
 ## Development server
 
