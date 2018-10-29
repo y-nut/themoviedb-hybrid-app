@@ -5,6 +5,8 @@ A simple hybrid app that utilizes themoviedb.org's API.
 
 The rating is returned from 0-10 but I have divided that with 2 in order to have a 5-star rating scale.
 
+The movies are retrieved from the NodeJS server in the /functions folder.
+
 
 ##Demo
 Screenshots: 
