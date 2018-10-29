@@ -7,6 +7,8 @@ The rating is returned from 0-10 but I have divided that with 2 in order to have
 
 The movies are retrieved from the NodeJS server in the /functions folder.
 
+You can download the app here:
+<a href="https://drive.google.com/file/d/1kfnoVdzYRD1EDjVNQN-WYPuGtGyT4yCc/view?usp=sharing">APK</a>
 
 ##Demo
 Screenshots: 
